@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Hero from '../components/Hero/Hero';
 import Product from '../components/Product/Product';
+import styles from '../theme/style.module.css';
 
 const ProductListPage = () => {
     const productListTitle = 'Products List';
@@ -20,10 +21,16 @@ const ProductListPage = () => {
     return (
         <>
             <Hero title={productListTitle} description={productListDescription} />
-            {products.map((product, index) => (
-                <Product key={index} product={product} />
-            )
-            )}
+            <section>
+                <ul className={styles.productListWrapper}>
+                    {products.map((product, index) => (
+                        <li className={styles.productListItem} key={index}>
+                            <Product product={product} />
+                        </li>
+                    )
+                    )}
+                </ul>
+            </section>
         </>
     )
 }

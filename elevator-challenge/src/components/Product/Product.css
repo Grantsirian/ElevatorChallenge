@@ -1,0 +1,31 @@
+.product-wrapper {
+    width: 100%;
+    max-width: 24em;
+    margin: 1rem;
+    min-height: 16rem;
+    gap: 1rem;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, .3) 0 0 0 1px;
+    border-radius: 0.75em;
+    padding: 50% 1rem 0;
+}
+.product-wrapper::after{
+    content: '';
+    position: absolute;
+    inset: 50% 0 0;
+    background-color: #fff;
+    z-index: -1;
+}
+
+.product-wrapper img {
+    width: auto;
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: top;
+}

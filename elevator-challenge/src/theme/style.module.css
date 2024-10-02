@@ -1,0 +1,9 @@
+.product-list-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 32rem));
+    gap: 1em;
+}
+
+.product-list-item {
+    width: 100%;
+}
