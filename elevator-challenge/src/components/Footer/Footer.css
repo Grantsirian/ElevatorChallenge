@@ -1,0 +1,8 @@
+footer{
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 100%;
+    padding: 1rem;
+    background-color: lavender;
+}
