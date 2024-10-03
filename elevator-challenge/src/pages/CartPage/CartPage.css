@@ -3,7 +3,8 @@
     grid-auto-rows: 4rem;
     width: 100%;
     max-width: 48rem;
-    margin: 0 auto;
+    margin: 1rem auto;
+    gap: 1rem;
 }
 
 .cart-list li {
@@ -20,6 +21,25 @@
     width: auto;
 }
 
-.cart-price {
+.cart-list .cart-price {
     margin-left: auto;
+}
+
+.cart-list .product-quantity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-list .product-quantity button {
+    font-size: 1rem;
+    line-height: 2;
+    font-weight: bold;
+    padding: 0;
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border: 0;
 }

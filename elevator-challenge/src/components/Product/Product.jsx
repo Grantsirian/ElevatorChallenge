@@ -1,35 +1,41 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FaEye } from 'react-icons/fa';
 import './Product.css';
 import { CartContext } from '../../context/CartContext';
 
 const Product = ({ product }) => {
-    const { title, description, category, image, price, rating } = product;
+    const { id, title, description, category, image, price, rating } = product;
     const rate = rating ? rating.rate : 'No rating';
     const count = rating ? rating.count : 0;
 
     const GlobalState = useContext(CartContext);
-
-    let truncatedDescription = description;
-
-    const [addProductToCart, setAddProductToCart] = useState([]);
-    const [removeProductFromCart, setRemoveProductFromCart] = useState([]);
-    const [isProductInCart, setIsProductInCart] = useState(false);
-    const [showPreview, setShowPreview] = useState(false);
-    const [showFullDescription, setShowFullDescription] = useState(false);
+    const cartState = GlobalState.state; // Access the cart state
     const dispatch = GlobalState.dispatch;
 
-    const handleAddToCartClick = (product) => {
-        setIsProductInCart((prevState) => !prevState);
+    const [showPreview, setShowPreview] = useState(false);
+    const [showFullDescription, setShowFullDescription] = useState(false);
+    const [isProductInCart, setIsProductInCart] = useState(false);
+
+    // Check if the product is in the cart when the component mounts or cart state changes
+    useEffect(() => {
+        const productInCart = cartState.some((cartProduct) => cartProduct.id === product.id);
+        setIsProductInCart(productInCart);
+    }, [cartState, product.id]);
+
+    const handleAddToCartClick = () => {
         if (!isProductInCart) {
-            dispatch({ type: 'ADD', productPayload: product })
+            dispatch({ type: 'ADD', productPayload: product });
         } else {
-            dispatch({ type: 'REMOVE' })
+            dispatch({ type: 'REMOVE', productPayload: product });
         }
-    }
+    };
+
+    let truncatedDescription = description;
     if (!showFullDescription) {
         truncatedDescription = truncatedDescription.length > 150 ? truncatedDescription.substring(0, 150) + '...' : description;
     }
+
     return (
         <div className={`product-wrapper ${showFullDescription ? '' : 'expanded'} ${showPreview ? '' : 'preview'}`}>
             <button className='preview' onClick={() => setShowPreview((prevState) => !prevState)}><FaEye /></button>
@@ -37,20 +43,22 @@ const Product = ({ product }) => {
             <div className='product-details'>
                 <span className='category'>{category}</span>
                 <span className='price' data-currency="R">{price.toFixed(2)}</span>
-                <h3 className='title'>{title}</h3>
+                <Link to={`/product/${id}`} state={{product}}>
+                    <h3 className='title'>{title}</h3>
+                </Link>
                 <p className='description'>{truncatedDescription}</p>
                 <span className='rating'>{rate} {count}</span>
                 <div className='actions'>
                     <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
                         show {showFullDescription ? 'less' : 'more'}
                     </button>
-                    <button onClick={() => handleAddToCartClick(product)}>
-                        {isProductInCart ? 'remove from' : 'add to'} cart
+                    <button onClick={handleAddToCartClick}>
+                        {isProductInCart ? 'Remove from cart' : 'Add to cart'}
                     </button>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Product
+export default Product;
