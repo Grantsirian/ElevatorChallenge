@@ -1,9 +1,37 @@
 .product-list-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(auto, 32rem));
-    gap: 1em;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
 }
 
 .product-list-item {
     width: 100%;
+}
+
+.container {
+    display: grid;
+}
+
+.heading {
+    font-size: 2rem;
+}
+
+.group-container {
+    width: 100%;
+    max-width: var(--width-constraint, 96rem);
+    margin: 1rem auto;
+}
+
+.search-input {
+    height: 3rem;
+    width: 100%;
+    margin: 1rem auto;
+    padding: 0 1rem;
+    max-width: var(--width-constraint, 96rem);
+    border-radius: 3rem;
+    font-size: 1.5rem;
+    border: 0;
+    background-color: #5AD2;
 }

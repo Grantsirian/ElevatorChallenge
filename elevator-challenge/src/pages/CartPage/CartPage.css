@@ -2,7 +2,7 @@
     display: grid;
     grid-auto-rows: 4rem;
     width: 100%;
-    max-width: 48rem;
+    max-width: var(--width-constraint, 48rem);
     margin: 1rem auto;
     gap: 1rem;
 }

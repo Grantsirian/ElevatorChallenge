@@ -4,10 +4,9 @@ import { createContext, useReducer } from 'react';
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    const initialState = []; // Replace with actual product fetching logic if needed
+    const initialState = [];
 
     const reducer = (state, action) => {
-        // Define actions to manage products
         switch (action.type) {
             case 'SET_PRODUCTS':
                 return action.payload;

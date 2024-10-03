@@ -6,6 +6,7 @@ import styles from '../theme/style.module.css';
 const ProductListPage = () => {
     const productListTitle = 'Products List';
     const productListDescription = 'Products List Description';
+    const productListImage = './src/assets/new-product-concept.png';
 
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -21,8 +22,8 @@ const ProductListPage = () => {
     };
 
     // Filter products based on search term
-    const filteredProducts = products.filter(product => 
-        product.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    const filteredProducts = products.filter(product =>
+        product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.category.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -38,17 +39,18 @@ const ProductListPage = () => {
 
     return (
         <>
-            <Hero title={productListTitle} description={productListDescription} />
-            <section>
+            <Hero title={productListTitle} description={productListDescription} imgUrl={productListImage} />
+            <section className={styles.container}>
                 <input
+                    className={styles.searchInput}
                     type="text"
                     placeholder="Search products..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 {Object.keys(groupedProducts).map((category) => (
-                    <div key={category}>
-                        <h2>{category}</h2>
+                    <div className={styles.groupContainer} key={category}>
+                        <h2 className={styles.heading}>{category}</h2>
                         <ul className={styles.productListWrapper}>
                             {groupedProducts[category].map((product, index) => (
                                 <li className={styles.productListItem} key={index}>

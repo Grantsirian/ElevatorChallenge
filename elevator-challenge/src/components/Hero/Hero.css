@@ -1,0 +1,10 @@
+.hero-wrapper {
+    background: linear-gradient(90deg, transparent, #5AD, #5AD, #637eea);
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.hero-wrapper .content-wrapper {
+    color: #fff;
+}
