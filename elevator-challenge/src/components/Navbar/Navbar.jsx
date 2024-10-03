@@ -21,7 +21,7 @@ const Navbar = () => {
     return (
         <nav className='nav-wrapper'>
             <div className='logo-wrapper'>
-                logo
+                <img src="./src/assets/logo.png" alt=''/>
             </div>
             <div className='search-wrapper'>
 

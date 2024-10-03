@@ -7,7 +7,9 @@ const ProductListPage = () => {
     const productListTitle = 'Products List';
     const productListDescription = 'Products List Description';
 
+    const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
+    
     useEffect(() => {
         getProductsJson();
     }, [])

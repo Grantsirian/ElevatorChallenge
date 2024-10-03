@@ -1,0 +1,25 @@
+.cart-list {
+    display: grid;
+    grid-auto-rows: 4rem;
+    width: 100%;
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.cart-list li {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    max-width: 100%;
+    gap: 1.5rem;
+}
+
+.cart-list img {
+    display: block;
+    height: 100%;
+    width: auto;
+}
+
+.cart-price {
+    margin-left: auto;
+}

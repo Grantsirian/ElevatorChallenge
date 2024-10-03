@@ -4,7 +4,7 @@ import DefaultLayout from './layouts/DefaultLayout';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProductListPage from './pages/ProductListPage';
-import CartPage from './pages/CartPage';
+import CartPage from './pages/CartPage/CartPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
