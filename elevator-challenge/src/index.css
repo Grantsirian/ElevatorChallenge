@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --width-constraint: 100rem;
+  --column-width: 32rem;
   --colour-primary: #5AD;
   --colour-secondary: #637EEA;
 }

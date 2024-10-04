@@ -7,11 +7,10 @@ const Navbar = ({ products }) => {
     const { state: cartItems } = useContext(CartContext);
     const totalItemsInCart = cartItems.reduce((total, product) => total + product.quantity, 0);
     const [searchTerm, setSearchTerm] = useState('');
-    const navigate = useNavigate(); // Use navigate from react-router-dom
+    const navigate = useNavigate();
 
     const handleSearch = () => {
         if (searchTerm) {
-            // Navigate to the ProductListPage with search term as a query parameter
             navigate(`/product-list?search=${encodeURIComponent(searchTerm)}`);
         }
     };

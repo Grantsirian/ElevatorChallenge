@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaEye } from 'react-icons/fa';
 import './Product.css';
 import { CartContext } from '../../context/CartContext';
+import Rating from '../Rating/Rating';
 
 const Product = ({ product }) => {
     const { id, title, description, category, image, price, rating } = product;
@@ -13,11 +14,10 @@ const Product = ({ product }) => {
     const cartState = GlobalState.state; // Access the cart state
     const dispatch = GlobalState.dispatch;
 
-    const [showPreview, setShowPreview] = useState(false);
+    const [showPreview, setShowPreview] = useState(true);
     const [showFullDescription, setShowFullDescription] = useState(false);
     const [isProductInCart, setIsProductInCart] = useState(false);
 
-    // Check if the product is in the cart when the component mounts or cart state changes
     useEffect(() => {
         const productInCart = cartState.some((cartProduct) => cartProduct.id === product.id);
         setIsProductInCart(productInCart);
@@ -33,7 +33,7 @@ const Product = ({ product }) => {
 
     let truncatedDescription = description;
     if (!showFullDescription) {
-        truncatedDescription = truncatedDescription.length > 150 ? truncatedDescription.substring(0, 150) + '...' : description;
+        truncatedDescription = truncatedDescription.length > 120 ? truncatedDescription.substring(0, 120) + '...' : description;
     }
 
     return (
@@ -47,7 +47,7 @@ const Product = ({ product }) => {
                     <h3 className='title'>{title}</h3>
                 </Link>
                 <p className='description'>{truncatedDescription}</p>
-                <span className='rating'>{rate} {count}</span>
+                <span className='rating'><Rating rating={rate} /> ({count})</span>
                 <div className='actions'>
                     <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
                         show {showFullDescription ? 'less' : 'more'}

@@ -1,10 +1,47 @@
 .hero-wrapper {
-    background: linear-gradient(90deg, transparent, #5AD, #5AD, #637eea);
+    background: linear-gradient(180deg, transparent, transparent, #5AD, #637eea);
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 2rem;
 }
 
 .hero-wrapper .content-wrapper {
     color: #fff;
+    padding: 0 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-wrapper .content-wrapper h1 {
+    margin: 0.5rem 0 1rem;
+}
+
+.image-wrapper {
+    margin: 0 auto;
+}
+
+.image-wrapper img{
+    max-width: 100%;
+}
+
+@media all and (min-width: 48rem) {
+    .hero-wrapper {
+        background: linear-gradient(125deg, transparent, transparent, #5AD, #637eea);
+    }
+
+    .hero-wrapper .content-wrapper {
+        text-align: left;
+        width: auto;
+    }
+
+    .image-wrapper {
+        margin: 0;
+    }
+}
+
+@media all and (min-width: 64rem) {
+    .hero-wrapper {
+        background: linear-gradient(90deg, transparent, #5AD, #5AD, #637eea);
+    }
 }

@@ -1,0 +1,21 @@
+.star-rating {
+    display: inline-block;
+  }
+  
+  .star {
+    font-size: 24px;
+    margin-right: 5px;
+    position: relative;
+    display: inline-block;
+    color: lightgrey; /* Default empty star color */
+  }
+  
+  .star.filled {
+    color: gold; /* Full stars in gold */
+  }
+  
+  .star.half {
+    background: linear-gradient(90deg, gold 50%, lightgrey 50%);
+    -webkit-background-clip: text;
+    color: transparent; /* Half gold, half grey */
+  }
