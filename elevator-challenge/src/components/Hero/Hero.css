@@ -27,7 +27,7 @@
 
 @media all and (min-width: 48rem) {
     .hero-wrapper {
-        background: linear-gradient(125deg, transparent, transparent, #5AD, #637eea);
+        background: linear-gradient(150deg, transparent, transparent, #5AD, #637eea);
     }
 
     .hero-wrapper .content-wrapper {

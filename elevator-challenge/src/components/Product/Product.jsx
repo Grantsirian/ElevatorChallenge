@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaEye } from 'react-icons/fa';
+import { FaEye, FaShoppingCart } from 'react-icons/fa';
 import './Product.css';
 import { CartContext } from '../../context/CartContext';
 import Rating from '../Rating/Rating';
 
-const Product = ({ product }) => {
+const Product = ({ product, simpleVariant = false }) => {
     const { id, title, description, category, image, price, rating } = product;
     const rate = rating ? rating.rate : 'No rating';
     const count = rating ? rating.count : 0;
@@ -17,6 +17,7 @@ const Product = ({ product }) => {
     const [showPreview, setShowPreview] = useState(true);
     const [showFullDescription, setShowFullDescription] = useState(false);
     const [isProductInCart, setIsProductInCart] = useState(false);
+    const [explode, setExplode] = useState(false);
 
     useEffect(() => {
         const productInCart = cartState.some((cartProduct) => cartProduct.id === product.id);
@@ -26,6 +27,8 @@ const Product = ({ product }) => {
     const handleAddToCartClick = () => {
         if (!isProductInCart) {
             dispatch({ type: 'ADD', productPayload: product });
+            setExplode(true);
+            setTimeout(() => setExplode(false), 500);
         } else {
             dispatch({ type: 'REMOVE', productPayload: product });
         }
@@ -37,24 +40,44 @@ const Product = ({ product }) => {
     }
 
     return (
-        <div className={`product-wrapper ${showFullDescription ? '' : 'expanded'} ${showPreview ? '' : 'preview'}`}>
-            <button className='preview' onClick={() => setShowPreview((prevState) => !prevState)}><FaEye /></button>
+        <div className={`product-wrapper cart-container ${simpleVariant ? 'simple-detail-layout' : ''} ${showFullDescription ? '' : 'expanded'} ${showPreview ? '' : 'preview'}`}>
+            {/* Conditionally render the preview button */}
+            {!simpleVariant && (
+                <button className='preview' onClick={() => setShowPreview((prevState) => !prevState)}>
+                    <FaEye />
+                </button>
+            )}
             <img src={image} alt={title} />
             <div className='product-details'>
                 <span className='category'>{category}</span>
                 <span className='price' data-currency="R">{price.toFixed(2)}</span>
-                <Link to={`/product/${id}`} state={{product}}>
+                {/* Conditionally render the link or title */}
+                {!simpleVariant ? (
+                    <Link to={`/product/${id}`} state={{ product }}>
+                        <h3 className='title'>{title}</h3>
+                    </Link>
+                ) : (
                     <h3 className='title'>{title}</h3>
-                </Link>
-                <p className='description'>{truncatedDescription}</p>
+                )}
+                <p className='description'>{!simpleVariant ? truncatedDescription : description}</p>
                 <span className='rating'><Rating rating={rate} /> ({count})</span>
                 <div className='actions'>
-                    <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
-                        show {showFullDescription ? 'less' : 'more'}
-                    </button>
-                    <button onClick={handleAddToCartClick}>
+                    {/* Conditionally render the show more/less button */}
+                    {!simpleVariant && (
+                        <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
+                            show {showFullDescription ? 'less' : 'more'}
+                        </button>
+                    )}
+                    <button className="add-to-cart" onClick={handleAddToCartClick}>
                         {isProductInCart ? 'Remove from cart' : 'Add to cart'}
                     </button>
+                    {explode && (
+                        <div className="cart-explosion">
+                            {[...Array(6)].map((_, i) => (
+                                <FaShoppingCart key={i} className={`cart-icon cart-${i}`} />
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

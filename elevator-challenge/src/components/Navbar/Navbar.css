@@ -1,5 +1,5 @@
 .nav-wrapper {
-    background-color: rgba(230, 230, 250, 0.5);
+    background-color: rgba(230, 230, 250, 0.7);
     display: flex;
     align-items: center;
     position: sticky;
@@ -14,12 +14,39 @@
     list-style: none;
 }
 
-.nav-wrapper li {
+.nav-wrapper .nav {
+    position: relative;
     padding: 0.5rem;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    transition: background-color 0.2s ease-out;
 }
 
-.nav-wrapper li {
-    padding: 0.5rem;
+.nav-wrapper .nav:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.nav-wrapper .nav::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0rem;
+    left: 50%;
+    height: 2px;
+    width: 0.75rem;
+    background-color: transparent;
+    transform: translateX(-50%) scale(1, 1);
+    transition: background-color 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.nav-wrapper .nav.active::before {
+    transform: translateX(-50%) scale(2, 1);
+    background-color: var(--colour-primary);
+}
+
+.nav-wrapper .nav:hover::before {
+    transform: translateX(-50%) scale(1.75, 1);
+    background-color: var(--colour-secondary);
 }
 
 .nav-wrapper .logo-wrapper {

@@ -23,7 +23,7 @@
 
 .cart-list {
     display: grid;
-    grid-auto-rows: 4rem;
+    grid-auto-rows: minmax(4rem, auto);
     width: calc(100% - 4rem);
     max-width: var(--width-constraint, 48rem);
     margin: 1rem auto;
@@ -35,27 +35,43 @@
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     box-shadow: var(--colour-primary) -1px -1px 0 1px, var(--colour-secondary) 1px 1px 0 1px;
-    display: flex;
     align-items: center;
     flex: 1 1 auto;
     max-width: 100%;
-    gap: 1.5rem;
+    gap: 0.5rem 1rem;
+    display: grid;
+    grid-template-columns: 3rem auto 4rem;
 }
 
 .cart-list img {
     display: block;
     height: 100%;
     width: auto;
+    object-fit: contain;
+    max-width: 3rem;
 }
 
 .cart-list .cart-price {
     margin-left: auto;
+    grid-column: auto / -1;
+}
+
+.cart-list li span {
+    grid-column: span 2 / -1;
 }
 
 .cart-list .product-quantity {
+    grid-column: auto / -2;
+    grid-row-start: 2;
+    margin-left: auto;
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.cart-list~.total strong {
+    margin-left: auto;
+    margin-right: 1rem;
 }
 
 .cart-list .product-quantity button {
@@ -72,6 +88,8 @@
 }
 
 .cart-list .remove {
+    margin-left: auto;
+    grid-column-end: -1;
     height: 2rem;
     width: 2rem;
     display: flex;
@@ -91,7 +109,37 @@
     padding: 0 2rem;
 }
 
-.cart-list~.total strong {
-    margin-left: auto;
-    margin-right: 12.5rem;
+
+
+@media all and (min-width: 48rem) {
+    .cart-list {
+        display: grid;
+        grid-auto-rows: minmax(4rem, auto);
+        width: calc(100% - 4rem);
+        max-width: var(--width-constraint, 48rem);
+        margin: 1rem auto;
+        gap: 1rem;
+        padding: 2rem;
+    }
+
+
+    .cart-list li {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .cart-list .product-quantity {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-left: 0;
+    }
+
+    .cart-list .remove {
+        margin-left: 0;
+    }
+
+    .cart-list~.total strong {
+        margin-right: 12.5rem;
+    }
 }

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Hero from '../components/Hero/Hero';
 import Product from '../components/Product/Product';
 import styles from '../theme/style.module.css';
+import { FaFrown } from 'react-icons/fa';
 
 const ProductListPage = () => {
     const productListTitle = 'Products List';
-    const productListDescription = 'Products List Description';
+    const productListDescription = 'Come choose a product from our incredible collection consisting of as many as 20 items!';
     const productListImage = './src/assets/new-product-concept.png';
 
     const [products, setProducts] = useState([]);
@@ -61,7 +62,17 @@ const ProductListPage = () => {
                     </div>
                 ))}
                 {filteredProducts.length === 0 && searchTerm && (
-                    <p>No products found for "{searchTerm}"</p>
+                    <div className="no-results">
+                        <svg width="0" height="0">
+                            <linearGradient id="blue-gradient" x1="100%" y1="100%" x2="0%" y2="0%">
+                                <stop stopColor="#55AADD" offset="0%" />
+                                <stop stopColor="#637EEA" offset="100%" />
+                            </linearGradient>
+                        </svg>
+                        <FaFrown size={48} className='theme-icon' style={{ fill: "url(#blue-gradient)" }} />
+                        <p>No products found for "{searchTerm}"</p>
+                    </div>
+
                 )}
             </section>
         </>

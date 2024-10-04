@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { CartContext } from '../../context/CartContext';
 
@@ -29,10 +29,13 @@ const Navbar = ({ products }) => {
             <ul>
                 {navLinks.map((nav, index) => (
                     <li key={index}>
-                        <Link className="nav" to={nav.url}>
+                        <NavLink 
+                            className={({ isActive }) => `nav ${isActive ? 'active' : ''}`} 
+                            to={nav.url}
+                        >
                             {nav.name}
                             {nav.badge && <span className='nav-badge'>{nav.badge}</span>}
-                        </Link>
+                        </NavLink>
                     </li>
                 ))}
             </ul>

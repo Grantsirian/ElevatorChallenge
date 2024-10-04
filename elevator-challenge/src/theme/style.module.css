@@ -26,15 +26,23 @@
 }
 
 .search-input {
-    height: 3rem;
+    height: 2.5rem;
     width: calc(100% - 2rem);
     margin: 1rem auto;
     padding: 0 1rem;
     max-width: var(--width-constraint, 96rem);
     border-radius: 3rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     border: 0;
-    background-color: #5AD2;
+    background-color: #e8f4facc;
+    position: sticky;
+    top: 5rem;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+.search-input:is(:focus, :focus-within) {
+    outline: var(--colour-primary) 2px solid;
 }
 
 @media all and (min-width: 48rem) {
@@ -52,7 +60,7 @@
     }
 
     .search-input {
-        height: 2.5rem;
-        font-size: 1.25rem;
+        height: 3rem;
+        font-size: 1.5rem;
     }
 }
