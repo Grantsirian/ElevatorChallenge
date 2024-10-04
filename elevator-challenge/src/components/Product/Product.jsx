@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEye, FaShoppingCart } from 'react-icons/fa';
-import './Product.css';
 import { CartContext } from '../../context/CartContext';
 import Rating from '../Rating/Rating';
+import './Product.css';
 
 const Product = ({ product, simpleVariant = false }) => {
     const { id, title, description, category, image, price, rating } = product;
@@ -41,7 +41,7 @@ const Product = ({ product, simpleVariant = false }) => {
 
     return (
         <div className={`product-wrapper cart-container ${simpleVariant ? 'simple-detail-layout' : ''} ${showFullDescription ? '' : 'expanded'} ${showPreview ? '' : 'preview'}`}>
-            {/* Conditionally render the preview button */}
+            
             {!simpleVariant && (
                 <button className='preview' onClick={() => setShowPreview((prevState) => !prevState)}>
                     <FaEye />
@@ -51,7 +51,7 @@ const Product = ({ product, simpleVariant = false }) => {
             <div className='product-details'>
                 <span className='category'>{category}</span>
                 <span className='price' data-currency="R">{price.toFixed(2)}</span>
-                {/* Conditionally render the link or title */}
+                
                 {!simpleVariant ? (
                     <Link to={`/product/${id}`} state={{ product }}>
                         <h3 className='title'>{title}</h3>
@@ -62,7 +62,7 @@ const Product = ({ product, simpleVariant = false }) => {
                 <p className='description'>{!simpleVariant ? truncatedDescription : description}</p>
                 <span className='rating'><Rating rating={rate} /> ({count})</span>
                 <div className='actions'>
-                    {/* Conditionally render the show more/less button */}
+                    
                     {!simpleVariant && (
                         <button onClick={() => setShowFullDescription((prevState) => !prevState)}>
                             show {showFullDescription ? 'less' : 'more'}

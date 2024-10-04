@@ -66,10 +66,16 @@
 }
 
 .nav-wrapper .nav-badge {
-    background-color: #f00;
+    background-color: var(--colour-primary);
     color: white;
-    border-radius: 50%;
-    padding: .3125rem .625rem;
-    font-size: .75rem;
+    border-radius: 1rem;
+    font-size: .625rem;
     margin-left: .3125rem;
+    position: absolute;
+    left: calc(100% - 0.75rem);
+    height: 1rem;
+    min-width: 0.75rem;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 0.125rem;
 }

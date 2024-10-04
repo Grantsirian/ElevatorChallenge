@@ -2,14 +2,14 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import { useContext } from 'react';
-import { CartContext } from '../context/CartContext'; // Import your CartContext
+import { CartContext } from '../context/CartContext';
 
 const DefaultLayout = () => {
-    const { state: cartItems } = useContext(CartContext); // Access cart state
+    const { state: cartItems } = useContext(CartContext);
 
     return (
         <>
-            <Navbar products={cartItems} /> {/* Pass cart items to Navbar */}
+            <Navbar products={cartItems} />
             <Outlet />
             <Footer />
         </>

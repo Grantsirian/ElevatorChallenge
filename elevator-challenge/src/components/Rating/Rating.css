@@ -7,15 +7,15 @@
     margin-right: 5px;
     position: relative;
     display: inline-block;
-    color: lightgrey; /* Default empty star color */
+    color: lightgrey;
   }
   
   .star.filled {
-    color: gold; /* Full stars in gold */
+    color: gold;
   }
   
   .star.half {
     background: linear-gradient(90deg, gold 50%, lightgrey 50%);
     -webkit-background-clip: text;
-    color: transparent; /* Half gold, half grey */
+    color: transparent;
   }

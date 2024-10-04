@@ -1,19 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import { CartContext } from '../../context/CartContext';
 
-const Navbar = ({ products }) => {
+const Navbar = () => {
     const { state: cartItems } = useContext(CartContext);
     const totalItemsInCart = cartItems.reduce((total, product) => total + product.quantity, 0);
-    const [searchTerm, setSearchTerm] = useState('');
-    const navigate = useNavigate();
-
-    const handleSearch = () => {
-        if (searchTerm) {
-            navigate(`/product-list?search=${encodeURIComponent(searchTerm)}`);
-        }
-    };
 
     const navLinks = [
         { name: 'Home', url: '/' },

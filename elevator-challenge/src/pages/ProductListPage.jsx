@@ -22,13 +22,11 @@ const ProductListPage = () => {
         setProducts(responseJson);
     };
 
-    // Filter products based on search term
     const filteredProducts = products.filter(product =>
         product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.category.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Group products by category
     const groupedProducts = filteredProducts.reduce((acc, product) => {
         const category = product.category;
         if (!acc[category]) {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
-import DefaultLayout from './layouts/DefaultLayout';
+import DefaultLayout from './layouts/defaultLayout';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProductListPage from './pages/ProductListPage';

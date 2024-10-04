@@ -7,12 +7,12 @@ const Rating = ({rating}) => {
   return (
     <div className="star-rating">
       {[...Array(totalStars)].map((star, index) => {
-        let starClass = 'star empty'; // Default class (grey star)
+        let starClass = 'star empty';
 
         if (index < Math.floor(rating)) {
-          starClass = 'star filled'; // Full star (gold)
+          starClass = 'star filled';
         } else if (index < Math.ceil(rating)) {
-          starClass = 'star half'; // Half star (half gold, half grey)
+          starClass = 'star half';
         }
 
         return (
